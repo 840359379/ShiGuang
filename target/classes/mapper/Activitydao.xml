@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="com.chanmei.dao.ActivityDao">
+    	<!--  查找 -->
+    	<select id="findActivityById" resultType="com.chanmei.entity.Activity" parameterType="Integer">
+    		select * from activity where activityid = #{activityid}
+    	</select>
+    	
+    	<!-- 新增 -->
+    	<insert id="addActivity" parameterType="com.chanmei.entity.Activity">
+    		insert into activity(name,synopsis,quantity,start,finish,price,portrait) 
+    			values(#{name},#{synopsis},#{quantity},#{start},#{finish},#{price},#{portrait})
+    	</insert>
+    	
+    	<!-- 修改 -->
+    	<update id="updateActivity" parameterType="com.chanmei.entity.Activity">
+    		update activity set name=#{name},synopsis=#{synopsis},quantity=#{quantity},
+    		start=#{start},finish=#{finish},price=#{price},portrait=#{portrait} where activityid=#{activityid}
+    	</update>
+    	
+    	<!-- 删除 -->
+    	<delete id="deleteActivity" parameterType="com.chanmei.entity.Activity">
+    		delete from activity where activityid=#{activityid}
+    	</delete>
+    </mapper>
